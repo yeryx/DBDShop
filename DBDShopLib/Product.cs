@@ -8,7 +8,10 @@ namespace DBDShopLib
 {
     public class Product
     {
-        public int Id = 0;
-        public string Name = null;
+        public int idProducto = 0;
+        public string descripcion=null;
+        public float precio=0,0;
     }
-}
+ }
+
+

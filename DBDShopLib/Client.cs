@@ -40,7 +40,7 @@ namespace DBDShopLib
         {
             List<Product> products = new List<Product>();
 
-            string query = "SELECT Id,Name FROM Products";
+            string query = "SELECT idPedido,descripcion, precio FROM Products";
             MySqlCommand cmd = new MySqlCommand(query, m_connection);
             MySqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
@@ -49,8 +49,9 @@ namespace DBDShopLib
                 int id= int.Parse(reader.GetValue(0).ToString());
                 string name = reader.GetValue(1).ToString();
                 Product product = new Product();
-                product.Id = id;
-                product.Name = name;
+                product.idProducto = id;
+                product.descripcion = descripcion;
+                producto.precio=precio;
                 products.Add(product);
             }
             reader.Close();
@@ -61,10 +62,86 @@ namespace DBDShopLib
         {
             foreach(Product product in products)
             {
-                string query = "DELETE FROM Products WHERE Id =" + product.Id + ";";
+                string query = "DELETE FROM Products WHERE idProducto =" + product.idProducto + ";";
                 MySqlCommand cmd = new MySqlCommand(query, m_connection);
                 cmd.ExecuteNonQuery();
+
             }
         }
+
+        public List<Cliente> GetCliente()
+        {
+            List<Cliente> clientes = new List<Cliente>();
+
+            string query ="SELECT DNI,nombre,apellido from Cliente ";
+            MySqlCommand cmd = new MySqlCommand(query, m_connection);
+            MySqlDataReader reader = cmd.ExecuteReader();
+             while (reader.Read())
+            {
+                
+                string DNI= int.Parse(reader.GetValue(0).ToString());
+                string nombre = reader.GetValue(1).ToString();
+                string apellido=reader.GetValue(2).ToString();
+                Cliente cliente = new Cliente();
+                product.DNI = DNI;
+                product.nombre = nombre;
+                producto.apellido=apellido;
+                products.Add(cliente);
+            }
+            reader.Close();
+            return products;
+        }
+         public void DeleteProducts(List<Cliente> clientes)
+        {
+            foreach(Cliente cliente in clientes)
+            {
+                string query = "DELETE FROM Cliente WHERE DNI =" + cliente.DNI + ";";
+                MySqlCommand cmd = new MySqlCommand(query, m_connection);
+                cmd.ExecuteNonQuery();
+
+            }
+        }
+
+
+         public List<Vendedor> GetVendedor()
+        {
+            List<Vendedor> vendedores = new List<Vendedor>();
+
+            string query ="SELECT CIF,nombre,direccion,numTlf,email from Distribuidor ";
+            MySqlCommand cmd = new MySqlCommand(query, m_connection);
+            MySqlDataReader reader = cmd.ExecuteReader();
+             while (reader.Read())
+            {
+                
+                string CIF= int.Parse(reader.GetValue(0).ToString());
+                string nombre = reader.GetValue(1).ToString();
+                string direccion=reader.GetValue(2).ToString();
+                string numTlf=reader.GetValue(3).ToString();
+                string email=reader.GetValue(4).ToStrinf();
+                Vendedor vendedor = new Ven();
+                vendedor.CIF = CIF;
+                vendedor.nombre = nombre;
+                vendedor.direccion=direccion;
+                vendedor.numTlf=numTlf;
+                vendedor.email=email;
+                products.Add(vendedor);
+            }
+            reader.Close();
+            return products;
+        }
+
+         public void DeleteProducts(List<Vendedor> vendedores)
+        {
+            foreach(Vendedor vendedor in vendedores)
+            {
+                string query = "DELETE FROM Vendedor WHERE CIF =" + vendedor.CIF + ";";
+                MySqlCommand cmd = new MySqlCommand(query, m_connection);
+                cmd.ExecuteNonQuery();
+
+            }
+        }
+
+
+
     }
 }
