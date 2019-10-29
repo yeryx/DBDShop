@@ -5,7 +5,7 @@ public class ProductoDistribuidor
     public int idProducto;
     public string idDistribuidor;
     public int numArticulos;
-    public ProductiDistribuidor()
+    public ProductoDistribuidor()
 	{
     idProducto = 0;
     idDistribuidor = null;

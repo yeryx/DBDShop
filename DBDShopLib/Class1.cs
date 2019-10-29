@@ -13,7 +13,7 @@ namespace DBDShopLib
 
             public void reducirStock(int idObjeto,string idVendedor, int cantidad)
         {
-                List<ProductoDistribuidor> lista = m_cliente.GetProductosDistribuidores;
+                List<ProductoDistribuidor> lista = m_cliente.GetProductosDistribuidores();
                 
                 for(int i=0; i < lista.Count; i++)
             {
@@ -41,6 +41,8 @@ namespace DBDShopLib
             ventita.cantidad = cantidad;
 
         }
+
+
 
 
 
