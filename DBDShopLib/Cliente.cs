@@ -8,11 +8,25 @@ namespace DBDShopLib
 {
     public class Cliente
     {
-       
-        public string DNI = null;
-        public string Nombre = null;
-        public string Apellidos = null;
-       
-	}
+
+        public string DNI;
+        public string Nombre;
+        public string Apellidos;
+
+
+        public string getDNI()
+        {
+            return DNI;
+        }
+
+        public string getNombre()
+        {
+            return Nombre;
+        }
+        public string getApellido()
+        {
+            return Apellido;
+        }
+    }
 }
 
