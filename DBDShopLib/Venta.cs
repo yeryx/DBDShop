@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace DBDShopLib
 {
-    public class Product
+    public class Venta
     {
-        public int Id = 0;
-        public string Name = null;
+        public int idComprador;
+        public int idproducto;
+        public int idVendedor;
+        public int cantidad;
     }
- }
-
-
+}

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DBDShopLib;
 
+
 namespace DBDShopApp
 {
     public partial class Form1 : Form
@@ -16,26 +17,41 @@ namespace DBDShopApp
         public Form1()
         {
             InitializeComponent();
-
-            m_client = new Client("NLphb4HrH0", "NLphb4HrH0", "VM8GYV3qZ7");
-            textBox1.Text = "Connected to database";
         }
 
         Client m_client;
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-            m_client.InsertTestData();
-            textBox1.Text = "Test data inserted in the database";
-        }
+            List<Product> lista = new List<Product>();
+            string nombre = textBox1.Text;
+            int compra = Convert.ToInt16(textBox2.Text);
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            List<Product> products = m_client.GetProducts();
-            listBox1.Items.Clear();
-            foreach (Product product in products)
+            lista = m_client.GetProducts();
+            for (var i = 0; i < lista.Count; i++)
             {
-                listBox1.Items.Add(product.Name);
+                if (lista[i].Name.Equals(nombre))
+                {
+                    if (lista[i].stock > compra)
+                    {
+                        int nuevostock = lista[i].stock - compra;
+                        lista[i].setStock(nuevostock);
+
+
+                        Venta venta = new Venta();
+                        venta.idproducto = lista[i].Id;
+                        venta.cantidad = compra;
+                        venta.idComprador = Convert.ToInt16(textBox3.Text);
+                        venta.idVendedor = Convert.ToInt16(textBox4.Text);
+
+                        
+                    }
+                    else
+                    {
+                        
+                    }
+                    i = lista.Count;
+                }
             }
         }
     }
