@@ -1,4 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace DBDShopLib
 {
@@ -7,8 +11,8 @@ namespace DBDShopLib
         public Cliente()
         { 
         public string DNI = null;
-        public string nombre = null;
-        public string apellidos = null;
+        public string Nombre = null;
+        public string Apellidos = null;
        }
 	}
 }

@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
 namespace DBDShopLib
 {
-    public class Vendedor
+    public class Distribuidor
 
     {
         public string CIF;
