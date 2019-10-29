@@ -4,14 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DBDShopLib
+public class ProductoDistribuidor
 {
-    public class ProductoDistribuidor
-    {
-	
-    public int idProducto = 0;
-    public string idDistribuidor = null;
-    public int numArticulos = 0;
+    public int idProducto;
+    public string idDistribuidor;
+    public int numArticulos;
+    public ProductiDistribuidor()
+	{
+    idProducto = 0;
+    idDistribuidor = null;
+    numArticulos = 0;
+}
 
+    public int getNumArticulos()
+    {
+        return numArticulos;
     }
 }

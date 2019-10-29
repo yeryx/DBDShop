@@ -7,9 +7,9 @@ namespace DBDShopLib
 {
     public class Venta
     {
-        public int idComprador;
+        public string idComprador;
         public int idproducto;
-        public int idVendedor;
+        public string idVendedor;
         public int cantidad;
     }
 }

@@ -9,11 +9,14 @@ namespace DBDShopLib
     public class Distribuidor
 
     {
-        public string CIF = null;
-        public string nombre = null;
-        public string direccion = null;
-        public int numTelefono = 0;
-        public string email = null;
+        public string CIF;
+        public string nombre;
+        public string direccion;
+        public int numTelefono ;
+        public string email;
+
+         
+        
 
     }
 }
