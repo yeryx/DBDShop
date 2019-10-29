@@ -11,8 +11,8 @@ namespace DBDShopLib
         public Cliente()
         { 
         public string DNI = null;
-        public string nombre = null;
-        public string apellidos = null;
+        public string Nombre = null;
+        public string Apellidos = null;
        }
 	}
 }

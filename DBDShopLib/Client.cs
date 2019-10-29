@@ -80,7 +80,7 @@ namespace DBDShopLib
         {
             List<Cliente> clientes = new List<Cliente>();
 
-            string query ="SELECT DNI,nombre,apellido from Cliente ";
+            string query ="SELECT DNI,Nombre,Apellido from Cliente ";
             MySqlCommand cmd = new MySqlCommand(query, m_connection);
             MySqlDataReader reader = cmd.ExecuteReader();
              while (reader.Read())
@@ -92,15 +92,15 @@ namespace DBDShopLib
 
                 Cliente cliente = new Cliente();
 
-                product.DNI = DNI;
-                product.nombre = nombre;
-                producto.apellido=apellido;
-                products.Add(cliente);
+                cliente.DNI = DNI;
+                cliente.Nombre = nombre;
+                cliente.Apellido=apellido;
+                cliente.Add(cliente);
             }
             reader.Close();
             return products;
         }
-         public void DeleteProducts(List<Cliente> clientes)
+         public void DeleteClientes(List<Cliente> clientes)
         {
             foreach(Cliente cliente in clientes)
             {
@@ -112,7 +112,7 @@ namespace DBDShopLib
         }
 
 
-         public List<Distribuidor> GetVendedores()
+         public List<Distribuidor> GetDisytribuidores()
         {
             List<Distribuidor> vendedores = new List<Distribuidor>();
 
@@ -122,7 +122,7 @@ namespace DBDShopLib
              while (reader.Read())
             {
                 
-                string CIF= ireader.GetValue(0).ToString();
+                string CIF= reader.GetValue(0).ToString();
                 string nombre = reader.GetValue(1).ToString();
                 string direccion=reader.GetValue(2).ToString();
                 string numTlf=reader.GetValue(3).ToString();
@@ -142,9 +142,9 @@ namespace DBDShopLib
             return products;
         }
 
-         public void DeleteProducts(List<Vendedor> vendedores)
+         public void DeleteDistribuidores(List<Distribuidor> vendedores)
         {
-            foreach(Vendedor vendedor in vendedores)
+            foreach(Distribuidor vendedor in vendedores)
             {
                 string query = "DELETE FROM Vendedor WHERE CIF =" + vendedor.CIF + ";";
                 MySqlCommand cmd = new MySqlCommand(query, m_connection);
