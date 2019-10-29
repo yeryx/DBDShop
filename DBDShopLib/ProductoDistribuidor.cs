@@ -2,10 +2,18 @@
 
 public class ProductoDistribuidor
 {
-	public ProductiDistribuidor()
+    public int idProducto;
+    public string idDistribuidor;
+    public int numArticulos;
+    public ProductiDistribuidor()
 	{
-    public int idProducto = 0;
-    public string idDistribuidor = null;
-    public int numArticulos = 0;
+    idProducto = 0;
+    idDistribuidor = null;
+    numArticulos = 0;
 }
+
+    public int getNumArticulos()
+    {
+        return numArticulos;
+    }
 }

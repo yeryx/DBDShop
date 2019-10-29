@@ -32,7 +32,7 @@ namespace DBDShopApp
             {
                 if (lista[i].Name.Equals(nombre))
                 {
-                    if (lista[i].stock > compra)
+                    if (lista[i]. > compra)
                     {
                         int nuevostock = lista[i].stock - compra;
                         lista[i].setStock(nuevostock);
@@ -53,6 +53,11 @@ namespace DBDShopApp
                     i = lista.Count;
                 }
             }
+        }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
