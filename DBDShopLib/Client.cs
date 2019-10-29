@@ -23,6 +23,7 @@ namespace DBDShopLib
             m_connection.Open();
         }
 
+
         public void InsertTestData()
         {
             string query = "CREATE TABLE IF NOT EXISTS Products (Id int,Name TEXT)";
