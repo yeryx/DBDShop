@@ -10,11 +10,9 @@ namespace DBDShopLib
     {
         MySqlConnection m_connection = null;
 
-        public Client(string databasename, string username, string password, string server= "remotemysql.com")
+        public Client(string databasename= "g7EnbLEqTh", string username= "g7EnbLEqTh", string password= "ix3rJtQ1jg", string server= "remotemysql.com")
         {
-            databasename = "g7EnbLEqTh";
-            username = "g7EnbLEqTh";
-            password = "ix3rJtQ1jg";
+            
           
             m_connection = new MySqlConnection();
             m_connection.ConnectionString =
