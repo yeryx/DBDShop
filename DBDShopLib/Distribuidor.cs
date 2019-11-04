@@ -12,7 +12,7 @@ namespace DBDShopLib
         public string CIF;
         public string nombre;
         public string direccion;
-        public int numTlf ;
+        public int numTlf;
         public string email;
 
         public string getCIF()
@@ -38,7 +38,7 @@ namespace DBDShopLib
         {
             return email;
         }
-      
 
 
+    }
     }
