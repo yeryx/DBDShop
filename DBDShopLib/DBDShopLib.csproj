@@ -70,7 +70,6 @@
     <Compile Include="ProductoDistribuidor.cs" />
     <Compile Include="ProductoPedido.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Vendedor.cs" />
     <Compile Include="Venta.cs" />
   </ItemGroup>
   <ItemGroup>

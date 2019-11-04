@@ -48,7 +48,8 @@ namespace DBDShopLib
             {
                 
                 int id= int.Parse(reader.GetValue(0).ToString());
-                string name = reader.GetValue(1).ToString();
+                string descripcion = reader.GetValue(1).ToString();
+
 
                 Product product = new Product();
 
@@ -90,8 +91,8 @@ namespace DBDShopLib
 
                 cliente.DNI = DNI;
                 cliente.Nombre = nombre;
-                cliente.Apellido=apellido;
-                cliente.Add(cliente);
+                cliente.Apellidos=apellido;
+                clientes.Add(cliente);
             }
             reader.Close();
             return products;
