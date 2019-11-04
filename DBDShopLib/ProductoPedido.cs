@@ -9,10 +9,10 @@ namespace DBDShopLib
 
     {
       
-        public int idProducto = 0;
-        public int idPedido = 0;
-        public int cantidad = 0;
-        public string idVendedor = null;
+        public int idProducto;
+        public Pedido pedido;
+        public int cantidad;
+        public string idVendedor;
         
     }
 }

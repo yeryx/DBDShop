@@ -6,10 +6,15 @@ using System.Threading.Tasks;
 public class Pedido
 
 {
-	public Pedido()
+
+    public int idpedido ;
+    public DateTime fecha;
+    public string idCliente ;
+
+    public Pedido()
 	{
-        public int idpedido = 0;
-        public DateTime fecha;
-        public int idCliente = 0;
+        idpedido = 0;
+       fecha = DateTime.Now;
+       idCliente = 0;
 	}
 }
