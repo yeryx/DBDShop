@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MySql.Data.MySqlClient;
 
 namespace DBDShopLib
 {
@@ -10,11 +11,8 @@ namespace DBDShopLib
     {
         MySqlConnection m_connection = null;
 
-        public Client(string databasename, string username, string password, string server= "remotemysql.com")
+        public Client(string databasename = "g7EnbLEqTh", string username = "g7EnbLEqTh", string password = "ix3rJtQ1jg", string server= "remotemysql.com")
         {
-            databasename = "g7EnbLEqTh";
-            username = "g7EnbLEqTh";
-            password = "ix3rJtQ1jg";
           
             m_connection = new MySqlConnection();
             m_connection.ConnectionString =
@@ -43,7 +41,7 @@ namespace DBDShopLib
         {
             List<Product> products = new List<Product>();
 
-            string query = "SELECT idPedido,descripcion, precio FROM Products";
+            string query = "SELECT idPedido ,descripcion ,precio FROM Products";
             MySqlCommand cmd = new MySqlCommand(query, m_connection);
             MySqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
@@ -56,7 +54,7 @@ namespace DBDShopLib
 
                 product.idProducto = id;
                 product.descripcion = descripcion;
-                producto.precio=precio;
+                product.precio= precio;
                 products.Add(product);
             }
             reader.Close();
@@ -189,9 +187,9 @@ namespace DBDShopLib
         }
 
         
-         public List<ProductoDistribuidor> GetProductoDistribuidores()
+         public List<ProductoPedido> getProductoPedido()
         {
-            List<ProductoDistribuidor> productosDeLosDistribuidores = new List<ProductoDistribuidor>();
+            List<ProductoPedido> productosPedido = new List<ProductoPedido>();
 
             string query ="SELECT idProducto,idPedido,cantidad,idVendedor from ProductoPedido ";
             MySqlCommand cmd = new MySqlCommand(query, m_connection);
@@ -207,14 +205,18 @@ namespace DBDShopLib
                 ProductoPedido productoPedido = new ProductoPedido();
 
                 productoPedido.idProducto = idProducto;
-                productoPedido.idPedido = idPedido;
                 productoPedido.cantidad=cantidad;
                 productoPedido.idVendedor=idVendedor;
 
-                products.Add(productoPedido);
+                Pedido pedido = new Pedido();
+                pedido.idpedido = idPedido;
+
+                productoPedido.pedido = pedido;
+
+                productosPedido.Add(productoPedido);
             }
             reader.Close();
-            return products;
+            return productosPedido;
         }
 
          public void DeleteProducts(List<ProductoPedido> productoPedidos)

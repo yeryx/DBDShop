@@ -52,18 +52,32 @@ namespace DBDShopLib
         }
 
        
-          public void insertventa(ProductoPedido venta)
+          public void insertventa(ProductoPedido productoPedido)
         {
             MySqlConnection connection = new MySqlConnection("datasource=remotemysql.com;port=3306;username=g7EnbLEqTH;password=ix3rJtQ1jg");
-
-            string insertar = ("Insert into Venta");
-
-
-
-
+            connection.Open();
+            string insertar = ("Insert into ProductoPedido values(" + productoPedido.idProducto + ", " + productoPedido.pedido.idpedido+ ", " + productoPedido.cantidad + ", " + productoPedido.idVendedor + ");");
+            MySqlCommand command = new MySqlCommand(insertar, connection);
+            connection.Close();
         }
 
+        public void insertPedido(Pedido pedido)
+        {
+            MySqlConnection connection = new MySqlConnection("datasource=remotemysql.com;port=3306;username=g7EnbLEqTH;password=ix3rJtQ1jg");
+            connection.Open();
+            string insertar = ("Insert into Pedido values("+ pedido.idpedido+", "+pedido.fecha+", "+pedido.idCliente+");");
+            MySqlCommand command = new MySqlCommand(insertar, connection);
+            connection.Close();
+        }
 
+        public void introducirProducto(Product producto)
+        {
+            MySqlConnection connection = new MySqlConnection("datasource=remotemysql.com;port=3306;username=g7EnbLEqTH;password=ix3rJtQ1jg");
+            connection.Open();
+            string insertar = ("Insert into Producto values ("+producto.idProducto+", "+producto.descripcion+", "+producto.precio+");");
+            connection.Close();
+
+        }
 
     }
 }
