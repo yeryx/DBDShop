@@ -12,7 +12,7 @@ namespace DBDShopLib
         public int idProducto;
         public Pedido pedido;
         public int cantidad;
-        public string idVendedor;
+        public string idDistribuidor;
         
     }
 }
