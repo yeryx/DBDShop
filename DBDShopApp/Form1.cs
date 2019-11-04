@@ -26,7 +26,7 @@ namespace DBDShopApp
             List<Product> lista = new List<Product>();
             string nombre = textBox1.Text;
             int compra = Convert.ToInt16(textBox2.Text);
-
+            /*
             lista = m_client.GetProducts();
             for (var i = 0; i < lista.Count; i++)
             {
@@ -57,7 +57,7 @@ namespace DBDShopApp
 
         private void textBox4_TextChanged(object sender, EventArgs e)
         {
-
+        */
         }
     }
 }

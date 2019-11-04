@@ -48,7 +48,8 @@ namespace DBDShopLib
             {
                 
                 int id= int.Parse(reader.GetValue(0).ToString());
-                string name = reader.GetValue(1).ToString();
+                string descripcion = reader.GetValue(1).ToString();
+                int precio = int.Parse(reader.GetValue(2).ToString());
 
                 Product product = new Product();
 
@@ -90,11 +91,12 @@ namespace DBDShopLib
 
                 cliente.DNI = DNI;
                 cliente.Nombre = nombre;
-                cliente.Apellido=apellido;
-                cliente.Add(cliente);
+                cliente.Apellidos =apellido;
+
+                clientes.Add(cliente);
             }
             reader.Close();
-            return products;
+            return clientes;
         }
          public void DeleteClientes(List<Cliente> clientes)
         {
@@ -108,7 +110,7 @@ namespace DBDShopLib
         }
 
 
-         public List<Distribuidor> GetDisytribuidores()
+         public List<Distribuidor> GetDistribuidores()
         {
             List<Distribuidor> vendedores = new List<Distribuidor>();
 
@@ -121,8 +123,8 @@ namespace DBDShopLib
                 string CIF= reader.GetValue(0).ToString();
                 string nombre = reader.GetValue(1).ToString();
                 string direccion=reader.GetValue(2).ToString();
-                string numTlf=reader.GetValue(3).ToString();
-                string email=reader.GetValue(4).ToStrinf();
+                int numTlf=int.Parse(reader.GetValue(3).ToString());
+                string email=reader.GetValue(4).ToString();
 
                 Distribuidor vendedor = new Distribuidor();
 
@@ -132,10 +134,10 @@ namespace DBDShopLib
                 vendedor.numTlf=numTlf;
                 vendedor.email=email;
 
-                products.Add(vendedor);
+                vendedores.Add(vendedor);
             }
             reader.Close();
-            return products;
+            return vendedores;
         }
 
          public void DeleteDistribuidores(List<Distribuidor> vendedores)
@@ -165,14 +167,14 @@ namespace DBDShopLib
 
                 ProductoDistribuidor productoDistribuidor = new ProductoDistribuidor();
 
-                productoDistribuidor.idProducto = CIF;
-                productoDistribuidor.idDistribuidor = nombre;
-                productoDistribuidor.numArticulos=direccion;
+                productoDistribuidor.idProducto = idProducto;
+                productoDistribuidor.idDistribuidor = idDistribuidor;
+                productoDistribuidor.numArticulos=numArticulos;
                 
-                products.Add(productoDistribuidor);
+                productosDeLosDistribuidores.Add(productoDistribuidor);
             }
             reader.Close();
-            return products;
+            return productosDeLosDistribuidores;
         }
 
          public void DeleteProducts(List<ProductoDistribuidor> productosDeLosDistribuidores)
@@ -206,10 +208,10 @@ namespace DBDShopLib
 
                 productoPedido.idProducto = idProducto;
                 productoPedido.cantidad=cantidad;
-                productoPedido.idVendedor=idVendedor;
+                productoPedido.idDistribuidor=idVendedor;
 
                 Pedido pedido = new Pedido();
-                pedido.idpedido = idPedido;
+                pedido.idPedido = idPedido;
 
                 productoPedido.pedido = pedido;
 

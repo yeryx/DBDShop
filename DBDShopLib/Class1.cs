@@ -38,13 +38,13 @@ namespace DBDShopLib
         {
             ProductoPedido ventita = new ProductoPedido();
             
-            ventita.idVendedor = idVendedor;
+            ventita.idDistribuidor = idVendedor;
             ventita.idProducto = idObjeto;
             ventita.cantidad = cantidad;
             
 
             Pedido pedidito = new Pedido();
-            pedidito.idpedido = 1;
+            pedidito.idPedido = 1;
             pedidito.idCliente = idComprador;
 
             ventita.pedido = pedidito;
@@ -56,7 +56,7 @@ namespace DBDShopLib
         {
             MySqlConnection connection = new MySqlConnection("datasource=remotemysql.com;port=3306;username=g7EnbLEqTH;password=ix3rJtQ1jg");
             connection.Open();
-            string insertar = ("Insert into ProductoPedido values(" + productoPedido.idProducto + ", " + productoPedido.pedido.idpedido+ ", " + productoPedido.cantidad + ", " + productoPedido.idVendedor + ");");
+            string insertar = ("Insert into ProductoPedido values(" + productoPedido.idProducto + ", " + productoPedido.pedido.idPedido+ ", " + productoPedido.cantidad + ", " + productoPedido.idDistribuidor+ ");");
             MySqlCommand command = new MySqlCommand(insertar, connection);
             connection.Close();
         }
@@ -65,7 +65,7 @@ namespace DBDShopLib
         {
             MySqlConnection connection = new MySqlConnection("datasource=remotemysql.com;port=3306;username=g7EnbLEqTH;password=ix3rJtQ1jg");
             connection.Open();
-            string insertar = ("Insert into Pedido values("+ pedido.idpedido+", "+pedido.fecha+", "+pedido.idCliente+");");
+            string insertar = ("Insert into Pedido values("+ pedido.idPedido+", "+pedido.fecha+", "+pedido.idCliente+");");
             MySqlCommand command = new MySqlCommand(insertar, connection);
             connection.Close();
         }

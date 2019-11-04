@@ -12,21 +12,6 @@ namespace DBDShopLib
         public string DNI;
         public string Nombre;
         public string Apellidos;
-
-
-        public string getDNI()
-        {
-            return DNI;
-        }
-
-        public string getNombre()
-        {
-            return Nombre;
-        }
-        public string getApellido()
-        {
-            return Apellido;
-        }
     }
 }
 
