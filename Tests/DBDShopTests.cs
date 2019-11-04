@@ -27,16 +27,12 @@ namespace Tests
             products= client.GetProducts();
             Assert.IsTrue(products.Count == 2);
         }
-        [TestMethod]
-        public void MyOhterTest()
-        {
-            //Connect to the test database
-            //Client client = new Client("NLphb4HrH0", "NLphb4HrH0", "VM8GYV3qZ7");
-            
-            //Any testing you need to do
-            //....
-        }
 
-        
+        [TestMethod]
+        public void TestClientes()
+        {
+            public List<Cliente> listaClientes = Client.GetCliente();
+        }
+ 
     }
 }

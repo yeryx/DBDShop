@@ -51,6 +51,7 @@ namespace DBDShopLib
                 string descripcion = reader.GetValue(1).ToString();
                 int precio = int.Parse(reader.GetValue(2).ToString());
 
+
                 Product product = new Product();
 
                 product.idProducto = id;
