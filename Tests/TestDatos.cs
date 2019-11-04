@@ -11,11 +11,11 @@ public class TestDatos
 
     public void verClientes() {
         foreach (Cliente cliente in clientes) {
-            string DNI;
-            string Nombre;
-            string Apellido;
-            
+            string DNI=cliente.getDNI();
+            string Nombre=cliente.getNombre();
+            string Apellido=cliente.getApellido;
 
+            Console.WriteLine(stuff);
         }
     }
 }
