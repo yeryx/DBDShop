@@ -7,14 +7,9 @@ public class Pedido
 
 {
 
-    public int idpedido ;
+    public int idPedido ;
     public DateTime fecha;
     public string idCliente ;
 
-    public Pedido()
-	{
-        idpedido = 0;
-       fecha = DateTime.Now;
-       idCliente = 0;
-	}
+     
 }
