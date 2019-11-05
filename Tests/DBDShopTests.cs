@@ -8,11 +8,13 @@ namespace Tests
     [TestClass]
     public class DBDShopTests
     {
-        [TestMethod]
+
+        
+    [TestMethod]
         public void AddAndTestData()
         {
             //Connect to the test database
-            Client client= new Client("NLphb4HrH0", "NLphb4HrH0", "VM8GYV3qZ7");
+            Client client = new Client("NLphb4HrH0", "NLphb4HrH0", "VM8GYV3qZ7");
             //Get all the existing products
             List<Product> products = client.GetProducts();
             //Delete all the products
@@ -24,15 +26,10 @@ namespace Tests
             //Insert test data
             client.InsertTestData();
             //Check they were correctly inserted
-            products= client.GetProducts();
+            products = client.GetProducts();
             Assert.IsTrue(products.Count == 2);
         }
 
-        [TestMethod]
-        public void TestClientes()
-        {
-            public List<Cliente> listaClientes = Client.GetCliente();
-        }
- 
-    }
+        
+    }   
 }
