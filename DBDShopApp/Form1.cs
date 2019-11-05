@@ -65,6 +65,7 @@ namespace DBDShopApp
                     i = lista.Count;
                 }
             }
-        }
+
+    }
     }
 
