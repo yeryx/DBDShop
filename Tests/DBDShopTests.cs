@@ -36,6 +36,7 @@ namespace Tests
             Client cl = new Client();
             List<Cliente> listaClientes = new List<Cliente>();
             listaClientes = cl.GetCliente();
+
             string dni = null;
             string nombre = null;
             string apellidos = null;
@@ -55,6 +56,7 @@ namespace Tests
             Client cl = new Client();
             List<Product> listaProductos = new List<Product>();
             listaProductos = cl.GetProducts();
+
             int idProducto = 0;
             string descripcion = null;
             float precio = 0.0f;
@@ -65,10 +67,9 @@ namespace Tests
                 precio = producto.precio;
             }
 
-
         }
 
-
+        [TestMethod]
         public void TestProductoDistribuidor()
         {
             Client cl = new Client();
@@ -86,10 +87,54 @@ namespace Tests
                 numArticulos = prodDist.numArticulos;
             }
 
+        }
+
+        [TestMethod]
+        public void TestDistribuidor()
+         {
+            Client cl = new Client();
+            List<Distribuidor> listadistribuidores = new List<Distribuidor>();
+            listadistribuidores = cl.GetPedido();
+
+            string CIF = null;
+            string nombre = null;
+            string direccion = null;
+            int numTlf = 0;
+            string email = null;
+
+            foreach (Distribuidor distribuidor in listadistribuidores)
+            {
+                CIF = distribuidor.CIF;
+                nombre = distribuidor.nombre;
+                direccion = distribuidor.direccion;
+                numTlf = distribuidor.numTlf;
+                email = distribuidor.email;
+            }
 
         }
 
+        [TestMethod]
+        public void TestPedido()
+        {
+            Client cl = new Client();
+            List<Pedido> listaPedidos = new List<Pedido>();
+            listaPedidos = cl.getPedido();
 
+            int idPedido = 0;
+            DateTime fecha;
+            string idCliente = null;
+
+
+            foreach (Distribuidor distribuidor in listadistribuidores)
+            {
+                CIF = distribuidor.CIF;
+                nombre = distribuidor.nombre;
+                direccion = distribuidor.direccion;
+                numTlf = distribuidor.numTlf;
+                email = distribuidor.email;
+            }
+
+        }
 
 
     }

@@ -233,5 +233,42 @@ namespace DBDShopLib
             }
         }
 
+        public List<Pedido> getPedido()
+        {
+            List<Pedido> pedidos = new List<Pedido>();
+
+            string query = "SELECT idPedido,fecha,idCliente from Pedido ";
+            MySqlCommand cmd = new MySqlCommand(query, m_connection);
+            MySqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+
+                int idPedido = int.Parse(reader.GetValue(0).ToString());
+                DateTime fecha = DateTime.Parse(reader.GetValue(1).ToString());
+                string idCliente = reader.GetValue(2).ToString();
+
+                Pedido pedido = new Pedido();
+
+                pedido.idPedido = idPedido;
+                pedido.fecha = fecha;
+                pedido.idCliente = idCliente;
+
+                pedidos.Add(pedido);
+            }
+            reader.Close();
+            return pedidos;
+        }
+
+        public void DeletePedido(List<ProductoPedido> productoPedidos)
+        {
+            foreach (ProductoPedido producto in productoPedidos)
+            {
+                string query = "DELETE FROM ProductoDistribuidor WHERE CIF =" + producto.idProducto + ";";
+                MySqlCommand cmd = new MySqlCommand(query, m_connection);
+                cmd.ExecuteNonQuery();
+
+            }
+        }
+
     }
 }
