@@ -9,8 +9,8 @@ namespace Tests
     public class DBDShopTests
     {
 
-        
-    [TestMethod]
+
+       /* [TestMethod]
         public void AddAndTestData()
         {
             //Connect to the test database
@@ -29,7 +29,30 @@ namespace Tests
             products = client.GetProducts();
             Assert.IsTrue(products.Count == 2);
         }
+        */
+        [TestMethod]
+        public void TestClientes()
+        {
+            Client cl = new Client();
+            List<Cliente> listaClientes = new List<Cliente>();
+            listaClientes = cl.GetCliente();
+            string dni = null;
+            string nombre = null;
+            string apellidos = null;
+            foreach (Cliente cliente in listaClientes) {
+                dni = cliente.DNI;
+                nombre = cliente.Nombre;
+                apellidos = cliente.Apellidos;
 
+                Console.WriteLine("DNI: " + dni + " Nombre: " + nombre + " Apellidos: " + apellidos);
+            }
+
+
+        }
+
+          
+            
         
+     
     }   
 }

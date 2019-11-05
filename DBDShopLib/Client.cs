@@ -78,7 +78,7 @@ namespace DBDShopLib
         {
             List<Cliente> clientes = new List<Cliente>();
 
-            string query ="SELECT DNI,Nombre,Apellido from Cliente ";
+            string query ="SELECT DNI,Nombre,ApellidoS from Cliente ";
             MySqlCommand cmd = new MySqlCommand(query, m_connection);
             MySqlDataReader reader = cmd.ExecuteReader();
              while (reader.Read())
