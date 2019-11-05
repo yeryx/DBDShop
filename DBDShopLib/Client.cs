@@ -41,7 +41,7 @@ namespace DBDShopLib
         {
             List<Product> products = new List<Product>();
 
-            string query = "SELECT idPedido ,descripcion ,precio FROM Products";
+            string query = "SELECT idProducto ,descripcion ,precio FROM Producto";
             MySqlCommand cmd = new MySqlCommand(query, m_connection);
             MySqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
@@ -49,7 +49,7 @@ namespace DBDShopLib
                 
                 int id= int.Parse(reader.GetValue(0).ToString());
                 string descripcion = reader.GetValue(1).ToString();
-                int precio = int.Parse(reader.GetValue(2).ToString());
+                float precio = float.Parse(reader.GetValue(2).ToString());
 
 
                 Product product = new Product();
