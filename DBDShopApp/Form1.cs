@@ -52,15 +52,11 @@ namespace DBDShopApp
                                 venta = class1.crearVenta(distribuidor, comprador, lista[i].idProducto, compra);
 
                                 class1.insertventa(venta);
-                                
 
+                                j = distri.Count;
                             }
                         }
                     }
-                    }
-                    else
-                    {
-                        
                     }
                     i = lista.Count;
                 }
