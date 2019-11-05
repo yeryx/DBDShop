@@ -18,9 +18,9 @@ namespace DBDShopApp
         {
             InitializeComponent();
         }
-
+        
         Client m_client;
-
+        /*prueba*/
         private void button1_Click(object sender, EventArgs e)
         {
             List<Product> lista = new List<Product>();
