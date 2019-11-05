@@ -82,5 +82,25 @@ namespace DBDShopLib
 
         }
 
+
+        public List<ProductoDistribuidor> productosAgotados(){
+            List<ProductoDistribuidor> lista = new List<Product>();
+
+            List<ProductoDistribuidor> distri = new List<ProductoDistribuidor>();
+
+            distri = m_cliente.GetProductoDistribuidores();
+
+            for(int i = 0; i<distri.Count;i++){
+                if(distri[i].numArticulos==0){
+                
+                    lista.Add(distri[i]);
+                
+                }
+             }
+            return lista;
+        }
+
+
+
     }
 }
