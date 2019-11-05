@@ -8,7 +8,7 @@ using MySql.Data.MySqlClient;
 
 namespace DBDShopLib
 {
-    class Class1
+    public class Class1
     {
 
             Client m_cliente;
@@ -34,7 +34,7 @@ namespace DBDShopLib
 
         }
 
-            public void crearVenta(string idVendedor,string idComprador, int idObjeto, int cantidad)
+            public ProductoPedido crearVenta(string idVendedor,string idComprador, int idObjeto, int cantidad)
         {
             ProductoPedido ventita = new ProductoPedido();
             
@@ -47,8 +47,11 @@ namespace DBDShopLib
             pedidito.idPedido = 1;
             pedidito.idCliente = idComprador;
 
-            ventita.pedido = pedidito;
+            insertPedido(pedidito);
 
+            ventita.pedido = pedidito;
+            
+            return ventita;
         }
 
        

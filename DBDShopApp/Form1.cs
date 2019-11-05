@@ -20,31 +20,43 @@ namespace DBDShopApp
         }
         
         Client m_client;
-        /*prueba*/
+        Class1 class1;
+        
         private void button1_Click(object sender, EventArgs e)
         {
             List<Product> lista = new List<Product>();
+            List<ProductoDistribuidor> distri = new List<ProductoDistribuidor>();
             string nombre = textBox1.Text;
+            string comprador = textBox4.Text;
+            string distribuidor = textBox3.Text;
             int compra = Convert.ToInt16(textBox2.Text);
-            /*
+            
             lista = m_client.GetProducts();
+            distri = m_client.GetProductoDistribuidores();
+
             for (var i = 0; i < lista.Count; i++)
             {
-                if (lista[i].Name.Equals(nombre))
+                if (lista[i].descripcion.Equals(nombre))
                 {
-                    if (lista[i]. > compra)
-                    {
-                        int nuevostock = lista[i].stock - compra;
-                        lista[i].setStock(nuevostock);
+                    for (var j = 0; j < distri.Count; j++) {
 
+                        if (distri[j].idProducto == lista[i].idProducto && distri[j].idDistribuidor == distribuidor)
+                        {
+                            if (distri[j].numArticulos > compra)
+                            {
 
-                        Venta venta = new Venta();
-                        venta.idproducto = lista[i].Id;
-                        venta.cantidad = compra;
-                        venta.idComprador = Convert.ToInt16(textBox3.Text);
-                        venta.idVendedor = Convert.ToInt16(textBox4.Text);
+                                class1.reducirStock(lista[i].idProducto, distribuidor, compra);
 
-                        
+                                ProductoPedido venta = new ProductoPedido();
+
+                                venta = class1.crearVenta(distribuidor, comprador, lista[i].idProducto, compra);
+
+                                class1.insertventa(venta);
+                                
+
+                            }
+                        }
+                    }
                     }
                     else
                     {
@@ -54,10 +66,5 @@ namespace DBDShopApp
                 }
             }
         }
-
-        private void textBox4_TextChanged(object sender, EventArgs e)
-        {
-        */
-        }
     }
-}
+
