@@ -157,7 +157,18 @@ namespace Tests
 
         }
 
+        /***************************************************************************************************/
 
+        [TestMethod]
+        public void TestBorrarProducto()
+        {
+            Client cl = new Client();
+            List<Product> listaPedidos = new List<Product>();
+            listaPedidos = cl.GetProducts();
+
+            cl.DeleteProducts(listaPedidos);
+          
+        }
 
 
     }

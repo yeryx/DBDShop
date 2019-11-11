@@ -178,11 +178,11 @@ namespace DBDShopLib
             return productosDeLosDistribuidores;
         }
 
-         public void DeleteProducts(List<ProductoDistribuidor> productosDeLosDistribuidores)
+         public void DeleteProductoDistribuidores(List<ProductoDistribuidor> productosDeLosDistribuidores)
         {
             foreach(ProductoDistribuidor producto in productosDeLosDistribuidores)
             {
-                string query = "DELETE FROM ProductoDistribuidor WHERE CIF =" + producto.idProducto + ";";
+                string query = "DELETE FROM ProductoDistribuidor WHERE CIF =" + producto.idDistribuidor + "and idProducto=" + producto.idProducto + ";";
                 MySqlCommand cmd = new MySqlCommand(query, m_connection);
                 cmd.ExecuteNonQuery();
 
@@ -222,14 +222,13 @@ namespace DBDShopLib
             return productosPedido;
         }
 
-         public void DeleteProducts(List<ProductoPedido> productoPedidos)
+         public void DeleteProductoPedido(List<ProductoPedido> productoPedidos)
         {
             foreach(ProductoPedido producto in productoPedidos)
             {
-                string query = "DELETE FROM ProductoDistribuidor WHERE CIF =" + producto.idProducto + ";";
+                string query = "DELETE FROM ProductoDistribuidor WHERE idPedido =" + producto.pedido.idPedido + "and idProducto=" + producto.idProducto + ";";
                 MySqlCommand cmd = new MySqlCommand(query, m_connection);
                 cmd.ExecuteNonQuery();
-
             }
         }
 
@@ -259,11 +258,11 @@ namespace DBDShopLib
             return pedidos;
         }
 
-        public void DeletePedido(List<ProductoPedido> productoPedidos)
+        public void DeletePedido(List<Pedido> pedidos)
         {
-            foreach (ProductoPedido producto in productoPedidos)
+            foreach (Pedido pedido in pedidos)
             {
-                string query = "DELETE FROM ProductoDistribuidor WHERE CIF =" + producto.idProducto + ";";
+                string query = "DELETE FROM ProductoDistribuidor WHERE CIF =" + pedido.idPedido + ";";
                 MySqlCommand cmd = new MySqlCommand(query, m_connection);
                 cmd.ExecuteNonQuery();
 
