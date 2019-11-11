@@ -84,7 +84,7 @@ namespace DBDShopLib
 
 
         public List<ProductoDistribuidor> productosAgotados(){
-            List<ProductoDistribuidor> lista = new List<Product>();
+            List<ProductoDistribuidor> lista = new List<ProductoDistribuidor>();
 
             List<ProductoDistribuidor> distri = new List<ProductoDistribuidor>();
 
