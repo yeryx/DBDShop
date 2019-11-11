@@ -134,6 +134,7 @@ namespace Tests
 
         }
 
+        [TestMethod]
         public void TestProductoPedido()
         {
             Client cl = new Client();
@@ -155,6 +156,8 @@ namespace Tests
             }
 
         }
+
+
 
 
     }
