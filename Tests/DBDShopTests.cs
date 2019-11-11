@@ -94,7 +94,7 @@ namespace Tests
          {
             Client cl = new Client();
             List<Distribuidor> listadistribuidores = new List<Distribuidor>();
-            listadistribuidores = cl.GetPedido();
+            listadistribuidores = cl.GetDistribuidores();
 
             string CIF = null;
             string nombre = null;
@@ -125,13 +125,33 @@ namespace Tests
             string idCliente = null;
 
 
-            foreach (Distribuidor distribuidor in listadistribuidores)
+            foreach (Pedido pedido in listaPedidos)
             {
-                CIF = distribuidor.CIF;
-                nombre = distribuidor.nombre;
-                direccion = distribuidor.direccion;
-                numTlf = distribuidor.numTlf;
-                email = distribuidor.email;
+                idPedido = pedido.idPedido;
+                fecha = pedido.fecha;
+                idCliente = pedido.idCliente;
+            }
+
+        }
+
+        public void TestProductoPedido()
+        {
+            Client cl = new Client();
+            List<ProductoPedido> listaProductosDelPedido = new List<ProductoPedido>();
+            listaProductosDelPedido = cl.getProductoPedido();
+
+            int idPedido = 0;
+            int idProducto = 0;
+            int cantidad = 0;
+            string idDistribuidor = null;
+
+
+            foreach ( ProductoPedido prodPedido in listaProductosDelPedido)
+            {
+                idProducto = prodPedido.idProducto;
+                idPedido = prodPedido.pedido.idPedido;
+                cantidad = prodPedido.cantidad;
+                idDistribuidor = prodPedido.idDistribuidor;
             }
 
         }
