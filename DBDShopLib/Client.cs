@@ -41,7 +41,7 @@ namespace DBDShopLib
         {
             List<Product> products = new List<Product>();
 
-            string query = "SELECT idProducto ,descripcion ,precio FROM Producto";
+            string query = "SELECT idProducto ,descripcion ,precio FROM Products";
             MySqlCommand cmd = new MySqlCommand(query, m_connection);
             MySqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
@@ -194,7 +194,7 @@ namespace DBDShopLib
         {
             List<ProductoPedido> productosPedido = new List<ProductoPedido>();
 
-            string query ="SELECT idProducto,idPedido,cantidad,idVendedor from ProductoPedido ";
+            string query ="SELECT idProducto,idPedido,cantidad,idDistribuidor from ProductoPedido ";
             MySqlCommand cmd = new MySqlCommand(query, m_connection);
             MySqlDataReader reader = cmd.ExecuteReader();
              while (reader.Read())
@@ -202,8 +202,8 @@ namespace DBDShopLib
              
                 int idProducto= int.Parse(reader.GetValue(0).ToString());
                 int  idPedido =  int.Parse(reader.GetValue(1).ToString());
-                int cantidad= int.Parse(reader.GetValue(3).ToString());
-                string idVendedor= reader.GetValue(4).ToString();
+                int cantidad= int.Parse(reader.GetValue(2).ToString());
+                string idVendedor= reader.GetValue(3).ToString();
 
                 ProductoPedido productoPedido = new ProductoPedido();
 
