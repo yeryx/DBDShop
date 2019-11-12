@@ -17,10 +17,12 @@ namespace DBDShopApp
         public Form1()
         {
             InitializeComponent();
+            m_client = new Client();
+            clase = new Metodos();
         }
         
         Client m_client;
-        Class1 class1;
+        Metodos clase;
         
         private void button1_Click(object sender, EventArgs e)
         {
@@ -45,15 +47,23 @@ namespace DBDShopApp
                             if (distri[j].numArticulos > compra)
                             {
 
-                                class1.reducirStock(lista[i].idProducto, distribuidor, compra);
+                                clase.reducirStock(lista[i].idProducto, distribuidor, compra);
 
                                 ProductoPedido venta = new ProductoPedido();
 
-                                venta = class1.crearVenta(distribuidor, comprador, lista[i].idProducto, compra);
+                                venta = clase.crearVenta(distribuidor, comprador, lista[i].idProducto, compra);
 
-                                class1.insertventa(venta);
+                                clase.insertventa(venta);
 
                                 j = distri.Count;
+                            }
+
+                            else
+                            {
+
+                                Console.WriteLine("no se puede");
+
+
                             }
                         }
                     }
@@ -61,7 +71,6 @@ namespace DBDShopApp
                     i = lista.Count;
                 }
             }
-
     }
     }
 

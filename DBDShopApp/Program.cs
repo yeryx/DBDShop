@@ -16,7 +16,7 @@ namespace DBDShopApp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new CrearTablas());
+            Application.Run(new Form1());
         }
     }
 }

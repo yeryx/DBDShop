@@ -8,12 +8,26 @@ using MySql.Data.MySqlClient;
 
 namespace DBDShopLib
 {
-    public class Class1
+    public class Metodos
     {
+
+        MySqlConnection m_connection = null;
+        public Metodos(string databasename = "g7EnbLEqTh", string username = "g7EnbLEqTh", string password = "ix3rJtQ1jg", string server = "remotemysql.com") {
+            m_cliente = new Client();
+
+            m_connection = new MySqlConnection();
+            m_connection.ConnectionString =
+            "Server=" + server + ";" +
+            "database=" + databasename + ";" +
+            "UID=" + username + ";" +
+            "password=" + password + ";";
+            m_connection.Open();
+        }
+
 
             Client m_cliente;
 
-            public void reducirStock(int idObjeto,string idVendedor, int cantidad)
+            public void reducirStock(int idObjeto, string idVendedor, int cantidad)
         {
                 List<ProductoDistribuidor> lista = m_cliente.GetProductoDistribuidores();
                 
@@ -57,20 +71,20 @@ namespace DBDShopLib
        
           public void insertventa(ProductoPedido productoPedido)
         {
-            MySqlConnection connection = new MySqlConnection("datasource=remotemysql.com;port=3306;username=g7EnbLEqTH;password=ix3rJtQ1jg");
-            connection.Open();
+           // MySqlConnection connection = new MySqlConnection("datasource=remotemysql.com;port=3306;username=g7EnbLEqTH;password=ix3rJtQ1jg");
+            //connection.Open();
             string insertar = ("Insert into ProductoPedido values(" + productoPedido.idProducto + ", " + productoPedido.pedido.idPedido+ ", " + productoPedido.cantidad + ", " + productoPedido.idDistribuidor+ ");");
-            MySqlCommand command = new MySqlCommand(insertar, connection);
-            connection.Close();
+            MySqlCommand command = new MySqlCommand(insertar, m_connection);
+            //connection.Close();
         }
 
         public void insertPedido(Pedido pedido)
         {
-            MySqlConnection connection = new MySqlConnection("datasource=remotemysql.com;port=3306;username=g7EnbLEqTH;password=ix3rJtQ1jg");
-            connection.Open();
+           // MySqlConnection connection = new MySqlConnection("datasource=remotemysql.com;port=3306;username=g7EnbLEqTH;password=ix3rJtQ1jg");
+            //connection.Open();
             string insertar = ("Insert into Pedido values("+ pedido.idPedido+", "+pedido.fecha+", "+pedido.idCliente+");");
-            MySqlCommand command = new MySqlCommand(insertar, connection);
-            connection.Close();
+            MySqlCommand command = new MySqlCommand(insertar, m_connection);
+            //connection.Close();
         }
 
         public void introducirProducto(Product producto)

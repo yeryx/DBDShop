@@ -41,7 +41,7 @@ namespace DBDShopLib
         {
             List<Product> products = new List<Product>();
 
-            string query = "SELECT idProducto ,descripcion ,precio FROM Producto";
+            string query = "SELECT idProducto ,descripcion ,precio FROM Products";
             MySqlCommand cmd = new MySqlCommand(query, m_connection);
             MySqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
