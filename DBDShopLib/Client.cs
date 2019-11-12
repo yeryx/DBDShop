@@ -67,7 +67,7 @@ namespace DBDShopLib
         {
             foreach(Product product in products)
             {
-                string query = "DELETE FROM Products WHERE idProducto =" + product.idProducto + ";";
+                string query = "DELETE FROM Products WHERE idProducto = '" + product.idProducto + "';";
                 MySqlCommand cmd = new MySqlCommand(query, m_connection);
                 cmd.ExecuteNonQuery();
 
@@ -103,7 +103,7 @@ namespace DBDShopLib
         {
             foreach(Cliente cliente in clientes)
             {
-                string query = "DELETE FROM Cliente WHERE DNI =" + cliente.DNI + ";";
+                string query = "DELETE FROM Cliente WHERE DNI = '" + cliente.DNI + "';";
                 MySqlCommand cmd = new MySqlCommand(query, m_connection);
                 cmd.ExecuteNonQuery();
 
@@ -182,7 +182,7 @@ namespace DBDShopLib
         {
             foreach(ProductoDistribuidor producto in productosDeLosDistribuidores)
             {
-                string query = "DELETE FROM ProductoDistribuidor WHERE CIF =" + producto.idDistribuidor + "and idProducto=" + producto.idProducto + ";";
+                string query = "DELETE FROM ProductoDistribuidor WHERE CIF = '" + producto.idDistribuidor + "' and idProducto= '" + producto.idProducto + "';";
                 MySqlCommand cmd = new MySqlCommand(query, m_connection);
                 cmd.ExecuteNonQuery();
 
@@ -226,7 +226,7 @@ namespace DBDShopLib
         {
             foreach(ProductoPedido producto in productoPedidos)
             {
-                string query = "DELETE FROM ProductoDistribuidor WHERE idPedido =" + producto.pedido.idPedido + "and idProducto=" + producto.idProducto + ";";
+                string query = "DELETE FROM ProductoDistribuidor WHERE idPedido = '" + producto.pedido.idPedido + "' and idProducto=" + producto.idProducto + "' ;";
                 MySqlCommand cmd = new MySqlCommand(query, m_connection);
                 cmd.ExecuteNonQuery();
             }
@@ -262,7 +262,7 @@ namespace DBDShopLib
         {
             foreach (Pedido pedido in pedidos)
             {
-                string query = "DELETE FROM ProductoDistribuidor WHERE CIF =" + pedido.idPedido + ";";
+                string query = "DELETE FROM ProductoDistribuidor WHERE CIF = '" + pedido.idPedido + "';";
                 MySqlCommand cmd = new MySqlCommand(query, m_connection);
                 cmd.ExecuteNonQuery();
 
