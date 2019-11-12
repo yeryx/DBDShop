@@ -157,7 +157,75 @@ namespace Tests
 
         }
 
+        /***************************************************************************************************/
 
+
+        [TestMethod]
+        public void TestBorrarProductoDistribuidor()
+        {
+            Client cl = new Client();
+            List<ProductoDistribuidor> listaProdDistribuidor = new List<ProductoDistribuidor>();
+            listaProdDistribuidor = cl.GetProductoDistribuidores();
+
+            cl.DeleteProductoDistribuidores(listaProdDistribuidor);
+
+        }
+        [TestMethod]
+        public void TestBorrarProductoPedido()
+        {
+            Client cl = new Client();
+            List<ProductoPedido> listaProdPedidos = new List<ProductoPedido>();
+            listaProdPedidos = cl.getProductoPedido();
+
+            cl.DeleteProductoPedido(listaProdPedidos);
+
+        }
+        [TestMethod]
+        public void TestBorrarPedido()
+        {
+            Client cl = new Client();
+            List<Pedido> listaPedidos = new List<Pedido>();
+            listaPedidos = cl.getPedido();
+
+            cl.DeletePedido(listaPedidos);
+
+        }
+
+        [TestMethod]
+        public void TestBorrarDistribuidor()
+        {
+            Client cl = new Client();
+            List<Distribuidor> listaDistribuidores = new List<Distribuidor>();
+            listaDistribuidores = cl.GetDistribuidores();
+
+            cl.DeleteDistribuidores(listaDistribuidores);
+
+        }
+
+        [TestMethod]
+        public void TestBorrarCliente()
+        {
+            Client cl = new Client();
+            List<Cliente> listaClientes = new List<Cliente>();
+            listaClientes = cl.GetCliente();
+
+            cl.DeleteClientes(listaClientes);
+
+        }
+
+
+
+
+        [TestMethod]
+        public void TestBorrarProducto()
+        {
+            Client cl = new Client();
+            List<Product> listaPedidos = new List<Product>();
+            listaPedidos = cl.GetProducts();
+
+            cl.DeleteProducts(listaPedidos);
+          
+        }
 
 
     }
