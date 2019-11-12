@@ -19,28 +19,42 @@ namespace DBDShopApp
             InitializeComponent();
             m_client = new Client();
             clase = new Metodos();
+
+            List<Product> lista = new List<Product>();
+            lista = m_client.GetProducts();
+
+            for (var i = 0; i < lista.Count; i++)
+            {
+                comboBox1.Items.Add(lista[i].descripcion);
+
+            }
+
+
         }
-        
+
         Client m_client;
         Metodos clase;
-        
+
         private void button1_Click(object sender, EventArgs e)
         {
             List<Product> lista = new List<Product>();
             List<ProductoDistribuidor> distri = new List<ProductoDistribuidor>();
-            string nombre = textBox1.Text;
+            string nombre = (comboBox1.SelectedItem as string);
             string comprador = textBox4.Text;
-            string distribuidor = textBox3.Text;
+            string distribuidor = (comboBox2.Text as string);
             int compra = Convert.ToInt16(textBox2.Text);
-            
+
             lista = m_client.GetProducts();
             distri = m_client.GetProductoDistribuidores();
+
+            clase.anadirCliente(comprador);
 
             for (var i = 0; i < lista.Count; i++)
             {
                 if (lista[i].descripcion.Equals(nombre))
                 {
-                    for (var j = 0; j < distri.Count; j++) {
+                    for (var j = 0; j < distri.Count; j++)
+                    {
 
                         if (distri[j].idProducto == lista[i].idProducto && distri[j].idDistribuidor == distribuidor)
                         {
@@ -67,10 +81,47 @@ namespace DBDShopApp
                             }
                         }
                     }
-                    }
-                    i = lista.Count;
                 }
+                i = lista.Count;
             }
-    }
-    }
+        }
 
+
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            comboBox2.Items.Clear();
+
+            List<Product> lista = new List<Product>();
+            List<ProductoDistribuidor> distri = new List<ProductoDistribuidor>();
+
+            lista = m_client.GetProducts();
+            distri = m_client.GetProductoDistribuidores();
+
+            int productoseleccionado = 00;
+
+            for (var i = 0; i < lista.Count; i++)
+            {
+                if (comboBox1.SelectedItem.Equals(lista[i].descripcion))
+                {
+                    {
+                        productoseleccionado = lista[i].idProducto;
+                    }
+
+                }
+
+            }
+            for (var i = 0; i < distri.Count; i++)
+             {
+
+                if (productoseleccionado == distri[i].idProducto)
+                {
+                    comboBox2.Items.Add(distri[i].idDistribuidor);
+                }
+             }
+
+            }
+        }
+
+    }

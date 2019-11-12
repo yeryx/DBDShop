@@ -55,10 +55,11 @@ namespace DBDShopLib
             ventita.idDistribuidor = idVendedor;
             ventita.idProducto = idObjeto;
             ventita.cantidad = cantidad;
-            
+
+            Random rnd = new Random();
 
             Pedido pedidito = new Pedido();
-            pedidito.idPedido = 1;
+            pedidito.idPedido = rnd.Next(1, 999);
             pedidito.idCliente = idComprador;
 
             insertPedido(pedidito);
@@ -73,8 +74,10 @@ namespace DBDShopLib
         {
            // MySqlConnection connection = new MySqlConnection("datasource=remotemysql.com;port=3306;username=g7EnbLEqTH;password=ix3rJtQ1jg");
             //connection.Open();
-            string insertar = ("Insert into ProductoPedido values(" + productoPedido.idProducto + ", " + productoPedido.pedido.idPedido+ ", " + productoPedido.cantidad + ", " + productoPedido.idDistribuidor+ ");");
+            string insertar = ("Insert into ProductoPedido values('" + productoPedido.idProducto + "' , '" + productoPedido.pedido.idPedido+ "', '" + productoPedido.cantidad + "', '" + productoPedido.idDistribuidor+ "');");
             MySqlCommand command = new MySqlCommand(insertar, m_connection);
+            command.ExecuteNonQuery();
+
             //connection.Close();
         }
 
@@ -82,8 +85,10 @@ namespace DBDShopLib
         {
            // MySqlConnection connection = new MySqlConnection("datasource=remotemysql.com;port=3306;username=g7EnbLEqTH;password=ix3rJtQ1jg");
             //connection.Open();
-            string insertar = ("Insert into Pedido values("+ pedido.idPedido+", "+pedido.fecha+", "+pedido.idCliente+");");
+            string insertar = ("Insert into Pedido values('"+ pedido.idPedido+"', '"+pedido.fecha+"', '"+pedido.idCliente+"');");
             MySqlCommand command = new MySqlCommand(insertar, m_connection);
+            command.ExecuteNonQuery();
+
             //connection.Close();
         }
 
@@ -115,6 +120,59 @@ namespace DBDShopLib
         }
 
 
+        public void insertCliente(Cliente cliente)
+        {
+            // MySqlConnection connection = new MySqlConnection("datasource=remotemysql.com;port=3306;username=g7EnbLEqTH;password=ix3rJtQ1jg");
+            //connection.Open();
+            string insertar = ("Insert into Cliente values( '" + cliente.DNI + "', '" + cliente.Nombre + "', '" + cliente.Apellidos + "');");
+            MySqlCommand command = new MySqlCommand(insertar, m_connection);
+            command.ExecuteNonQuery();
 
-    }
+            //connection.Close();
+        }
+
+        public Boolean estaCliente(String c)
+        {
+
+            Client cl = new Client();
+            List<Cliente> lc = new List<Cliente>();
+            lc = cl.GetCliente();
+            Boolean esta = false;
+            foreach (Cliente clientebd in lc)
+            {
+                if (clientebd.DNI == c)
+                {
+                    esta = true;
+                }
+            }
+          return esta;
+
+        }
+
+        public void anadirCliente(String c)
+        {
+            Boolean esta = estaCliente(c);
+            if (esta == false)
+            {
+                String nombre = null;
+                String apellidos = null;
+
+                Cliente cliente = new Cliente();
+
+                cliente.Apellidos = apellidos;
+                cliente.Nombre = nombre;
+                cliente.DNI = c;
+
+                insertCliente(cliente);
+               
+            }
+        
+        }
+
+     }
+
+
+
+
+   
 }

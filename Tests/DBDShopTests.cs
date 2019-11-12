@@ -224,6 +224,8 @@ namespace Tests
             listaPedidos = cl.GetProducts();
 
             cl.DeleteProducts(listaPedidos);
+
+
           
         }
 
